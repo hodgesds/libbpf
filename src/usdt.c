@@ -291,8 +291,8 @@ void usdt_manager_free(struct usdt_manager *man)
 {
 	if (IS_ERR_OR_NULL(man))
 		return;
-
-	free(man->free_spec_ids);
+	if (man->free_spec_ids)
+		free(man->free_spec_ids);
 	free(man);
 }
 
